@@ -16,11 +16,13 @@ public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> findAll() {
         return entityManager.createQuery("from User", User.class).getResultList();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findById(Long id) {
         return entityManager.find(User.class, id);

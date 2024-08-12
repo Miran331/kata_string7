@@ -18,11 +18,13 @@ public class UserServiceImpl implements UserService {
         this.userDao = userDao;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> findAll() {
         return userDao.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User findById(Long id) {
         return userDao.findById(id);
